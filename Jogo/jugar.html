@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jugar</title>
+</head>
+<body>
+    <h1>Pregunta:</h1>
+    <p>{{ pregunta.pregunta }}</p>
+    <form action="/jugar" method="post">
+        {% for key, value in pregunta.respuestas.items() %}
+            <input type="radio" id="{{ key }}" name="respuesta" value="{{ key }}">
+            <label for="{{ key }}"><img src="{{ value }}" alt="{{ key }}"></label><br>
+        {% endfor %}
+        <input type="hidden" name="pregunta" value="{{ pregunta.pregunta }}">
+        <input type="submit" value="Responder">
+    </form>
+</body>
+</html>
